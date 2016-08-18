@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta id="X-CSRF-TOKEN" content="{{csrf_token()}}">
     <title>Laravel</title>
 
     <style>
@@ -20,6 +21,22 @@
 <div class="container">
     <task-component></task-component>
     <template id="task-template">
+        <pre>
+            @{{$data|json}}
+        </pre>
+        <form action="" method="post" v-on:submit.prevent>
+            <div class="form-group">
+                <input class="form-control" name="query" placeholder="Search" v-model="query"  v-on:keyup="search" />
+            </div>
+        </form>
+
+        <ul class="list-group">
+            <li class="list-group-item" v-for="task2 in body">
+                @{{task2.body}}
+            </li>
+
+        </ul>
+
         <ul class="list-group">
             <li class="list-group-item" v-for="task in list">
                 @{{task.body}}
@@ -27,6 +44,7 @@
             </li>
 
         </ul>
+
     </template>
 </div>
 

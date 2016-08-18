@@ -14,6 +14,15 @@
 Route::get('api/tasks', function (){
    return \App\Models\Task::latest()->get();
 });
+Route::post('api/tasks/ok', function (){
+    $query = Request::input('query');
+    $tasksBody = \App\Models\Task::where('body','LIKE',"%{$query}%")->get()->toArray();
+
+    return response()->json([
+        'body'  =>$tasksBody
+    ]);
+
+});
 //Route::get('/','TaskController@index');
 Route::get('/', function (){
    return view('welcome');
