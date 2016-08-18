@@ -18,6 +18,7 @@ Vue.component('task-component',{
         },
 
         tampilkanTaskList:function () {
+
             var resource = this.$resource('api/tasks/:id');
             resource.get(function (tasks) {
                 this.list = tasks;
