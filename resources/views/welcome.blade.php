@@ -33,6 +33,7 @@
         <ul class="list-group">
             <li class="list-group-item" v-for="task2 in body">
                 @{{task2.body}}
+                <strong @click="deleteTask2(task2)">x</strong>
             </li>
 
         </ul>
